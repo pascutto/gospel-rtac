@@ -12,6 +12,16 @@ let forall () =
 let double_forall () =
   check_success "double forall" (fun () -> double_forall (-10) 10)
 
+let power () =
+  for i = 0 to 20 do
+    check_success (Fmt.str "power 2 %i" i) (fun () -> power 2 i |> ignore)
+  done;
+  check_raises_ortac "power overflow" (fun () -> power 2 70 |> ignore)
+
 let suite =
   ( "Arithmetics",
-    [ ("forall", `Quick, forall); ("double forall", `Quick, double_forall) ] )
+    [
+      ("forall", `Quick, forall);
+      ("power", `Quick, power);
+      ("double forall", `Quick, double_forall);
+    ] )

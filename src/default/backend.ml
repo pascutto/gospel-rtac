@@ -25,9 +25,7 @@ module M : G = struct
       let err = mk_unexpected_exception [%e eloc] [%e estring fun_name] e in
       Errors.register err [%e evar acc_name];
       Errors.report [%e evar acc_name];
-      Errors.raise_errors [%e evar acc_name];
-      (* Here for typechecking reason *)
-      failwith "This portion of code shouldn't be accessible"]
+      Errors.raise_errors [%e evar acc_name]]
 end
 
 module B = Ortac_core.Builder.Make (M)

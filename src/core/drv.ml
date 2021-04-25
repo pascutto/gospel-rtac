@@ -8,6 +8,7 @@ let t =
       ("infix *", "Z.mul");
       ("infix /", "Z.div");
       ("mod", "Z.rem");
+      ("pow", "Z.pow");
       ("prefix -", "Z.neg");
       ("infix >", "Z.gt");
       ("infix >=", "Z.geq");

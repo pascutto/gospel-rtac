@@ -30,13 +30,13 @@ module Errors : sig
   val register : error -> t -> unit
   (** [register a l] add the element [a] to [l] *)
 
-  val raise_errors : t -> unit
+  val raise_errors : t -> 'a
   (** [raise_errors l] raises [Error] with the content of [l] *)
 
   val report : t -> unit
   (** [report l] prints the content of [l] *)
 
-  val report_and_raise : t -> unit
+  val report_and_raise : t -> 'a
   (** [report_and_raise l] report the content of [l] and raise it as an [Error] *)
 
   val check_and_do : (t -> unit) -> t -> unit
@@ -45,6 +45,8 @@ end
 
 module Z : sig
   include module type of Z
+
+  val pow : t -> t -> t
 
   val exists : t -> t -> (t -> bool) -> bool
   (** [exists i j p] is [true] iff the predicate there exists [k] within [i] and

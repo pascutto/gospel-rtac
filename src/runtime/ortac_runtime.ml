@@ -94,6 +94,9 @@ end
 module Z = struct
   include Z
 
+  let pow x n =
+    try pow x (to_int n) with Overflow -> invalid_arg "Exponent too big"
+
   let rec forall start stop p =
     start > stop || (p start && forall (succ start) stop p)
 
